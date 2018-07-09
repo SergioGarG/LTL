@@ -18,6 +18,30 @@ public abstract class LTLFormula extends Formula {
 		super();
 
 	}
+	
+	
+	public static LTLFormula getAnd(LTLFormula f1, LTLFormula f2) {
+		Preconditions.checkNotNull(f1, "The first subformula cannot be null");
+		Preconditions.checkNotNull(f2, "The second subformula cannot be null");
+
+		if (f1.equals(LTLFormula.TRUE)) {
+			return f2;
+		}
+		if (f2.equals(LTLFormula.TRUE)) {
+			return f1;
+		}
+		return new LTLConjunction(f1, f2);
+	}
+	
+	public static LTLFormula getAnd(LTLFormula... formulae) {
+
+		LTLFormula f = formulae[0];
+		for (int i = 1; i < formulae.length; i++) {
+			f = new LTLConjunction(f, formulae[i]);
+		}
+		return f;
+	}
+	
 
 	public abstract Set<LTLFormula> getChildren();
 
@@ -41,41 +65,27 @@ public abstract class LTLFormula extends Formula {
 	}
 
 	public static LTLFormula not(LTLFormula f) {
-		if (f instanceof LTLINegation) {
-			return ((LTLINegation) f).getChild();
+		if (f instanceof LTLNeg) {
+			return ((LTLNeg) f).getChild();
 		}
 
-		return new LTLINegation(f);
+		return new LTLNeg(f);
 	}
 
-	public static LTLFormula and(LTLFormula... formulae) {
-
-		LTLFormula f = formulae[0];
-		for (int i = 1; i < formulae.length; i++) {
-			if (f.equals(LTLFormula.TRUE)) {
-				f = formulae[i];
-			} else {
-				if (!formulae[i].equals(LTLFormula.TRUE)) {
-					f = new LTLConjunction(f, formulae[i]);
-				}
-			}
-		}
-		return f;
-	}
 
 	public static LTLFormula U(LTLFormula f1, LTLFormula f2) {
-		return new LTLIUntil(f1, f2);
+		return new LTLUntil(f1, f2);
 	}
 
 	public static LTLFormula S(LTLFormula f1, LTLFormula f2) {
-		return new LTLISince(f1, f2);
+		return new LTLSince(f1, f2);
 	}
 
 	// Producers method to build derived boolean CLTL formulae
 	public static LTLFormula or(LTLFormula... formulae) {
 		LTLFormula f = formulae[0];
 		for (int i = 1; i < formulae.length; i++) {
-			f = new LTLIDisjunction(f, formulae[i]);
+			f = new LTLDisjunction(f, formulae[i]);
 		}
 		return f;
 	}
@@ -84,11 +94,11 @@ public abstract class LTLFormula extends Formula {
 		Preconditions.checkNotNull(f1, "The first subformula cannot be null");
 		Preconditions.checkNotNull(f2, "The second subformula cannot be null");
 
-		return new LTLIImplies(f1, f2);
+		return new LTLImplies(f1, f2);
 	}
 
 	public static LTLFormula iff(LTLFormula f1, LTLFormula f2) {
-		return new LTLIIff(f1, f2);
+		return new LTLIff(f1, f2);
 	}
 
 	public static LTLFormula next(LTLFormula f) {

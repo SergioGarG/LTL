@@ -2,13 +2,14 @@ package se.gu.ltl.visitors;
 
 import se.gu.ltl.LTLConjunction;
 import se.gu.ltl.LTLEventually;
-import se.gu.ltl.LTLIDisjunction;
-import se.gu.ltl.LTLIGlobally;
-import se.gu.ltl.LTLIIff;
-import se.gu.ltl.LTLIImplies;
-import se.gu.ltl.LTLINegation;
-import se.gu.ltl.LTLISince;
-import se.gu.ltl.LTLIUntil;
+import se.gu.ltl.LTLDisjunction;
+import se.gu.ltl.LTLGlobally;
+import se.gu.ltl.LTLIff;
+import se.gu.ltl.LTLImplies;
+import se.gu.ltl.LTLNeg;
+import se.gu.ltl.LTLSince;
+import se.gu.ltl.LTLUntil;
+import se.gu.ltl.LTLWeakUntil;
 import se.gu.ltl.LTLNext;
 import se.gu.ltl.atoms.LTLPAAtom;
 import se.gu.ltl.atoms.LTLPEAtom;
@@ -19,7 +20,7 @@ import se.gu.ltl.atoms.LTLTrue;
 public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
-	public String visit(LTLIDisjunction formula) {
+	public String visit(LTLDisjunction formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") || (" + formula.getRightChild().accept(this) + " )";
 	}
 
@@ -34,27 +35,27 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 	}
 
 	@Override
-	public String visit(LTLINegation formula) {
+	public String visit(LTLNeg formula) {
 		return " ! (" + formula.getChild().accept(this) + ")";
 	}
 
 	@Override
-	public String visit(LTLIUntil formula) {
+	public String visit(LTLUntil formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") U (" + formula.getRightChild().accept(this) + " )";
 	}
 
 	@Override
-	public String visit(LTLIImplies formula) {
+	public String visit(LTLImplies formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") -> (" + formula.getRightChild().accept(this) + " )";
 	}
 
 	@Override
-	public String visit(LTLIIff formula) {
+	public String visit(LTLIff formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") <-> (" + formula.getRightChild().accept(this) + " )";
 	}
 
 	@Override
-	public String visit(LTLISince formula) {
+	public String visit(LTLSince formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") S (" + formula.getRightChild().accept(this) + " )";
 	}
 
@@ -69,7 +70,7 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 	}
 
 	@Override
-	public String visit(LTLIGlobally mitliGlobally) {
+	public String visit(LTLGlobally mitliGlobally) {
 		return " [] (" + mitliGlobally.getChild().accept(this) + ")";
 	}
 
@@ -92,6 +93,11 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 	@Override
 	public String visit(LTLPAAtom ltlpaAtom) {
 		return "(" + ltlpaAtom.getRobotName() + " exec " + ltlpaAtom.getActionName() + ")";
+	}
+
+	@Override
+	public String visit(LTLWeakUntil ltlWeakUntil) {
+		return "( " + ltlWeakUntil.getLeftChild().accept(this) + ") W (" + ltlWeakUntil.getRightChild().accept(this) + " )";
 	}
 
 }

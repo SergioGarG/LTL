@@ -8,7 +8,7 @@ import com.google.common.base.Preconditions;
 import se.gu.ltl.visitors.LTLVisitor;
 
 
-public class LTLIIff extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLIff extends LTLFormula implements BinaryFormula<LTLFormula> {
 
 
 
@@ -17,7 +17,7 @@ public class LTLIIff extends LTLFormula implements BinaryFormula<LTLFormula> {
 
 	private final String operator = "IFF";
 
-	public LTLIIff(LTLFormula subformula1, LTLFormula subformula2) {
+	public LTLIff(LTLFormula subformula1, LTLFormula subformula2) {
 		super();
 		Preconditions.checkNotNull(subformula1, "The first subformula cannot be null");
 		Preconditions.checkNotNull(subformula2, "The second subformula cannot be null");
@@ -86,7 +86,7 @@ public class LTLIIff extends LTLFormula implements BinaryFormula<LTLFormula> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LTLIIff other = (LTLIIff) obj;
+		LTLIff other = (LTLIff) obj;
 		if (operator == null) {
 			if (other.operator != null)
 				return false;

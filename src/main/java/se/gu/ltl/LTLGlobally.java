@@ -7,11 +7,11 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLIGlobally extends LTLFormula implements  UnaryFormula<LTLFormula> {
+public class LTLGlobally extends LTLFormula implements  UnaryFormula<LTLFormula> {
 
 	private final LTLFormula subformula;
 
-	public LTLIGlobally(LTLFormula subformula) {
+	public LTLGlobally(LTLFormula subformula) {
 		super();
 		Preconditions.checkNotNull(subformula, "The subformula cannot be null");
 		this.subformula = subformula;

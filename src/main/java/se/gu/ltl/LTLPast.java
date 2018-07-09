@@ -6,11 +6,11 @@ import java.util.Set;
 import com.google.common.base.Preconditions;
 
 
-public abstract class LTLIPast extends LTLFormula implements  UnaryFormula<LTLFormula> {
+public abstract class LTLPast extends LTLFormula implements  UnaryFormula<LTLFormula> {
 
 	private LTLFormula subformula;
 
-	public LTLIPast(LTLFormula subformula) {
+	public LTLPast(LTLFormula subformula) {
 		Preconditions.checkNotNull(subformula, "The subformula cannot be null");
 		this.subformula = subformula;
 	}

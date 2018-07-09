@@ -14,7 +14,7 @@ public class LTLNext extends LTLFormula implements UnaryFormula<LTLFormula> {
 
 	private final String operator = "NEXT";
 
-	protected LTLNext(LTLFormula subformula) {
+	public LTLNext(LTLFormula subformula) {
 		
 
 		Preconditions.checkNotNull(subformula, "The subformula cannot be null");

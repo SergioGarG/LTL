@@ -7,14 +7,14 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLIUntil extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLWeakUntil extends LTLFormula implements BinaryFormula<LTLFormula> {
 
 	private final LTLFormula subformula1;
 	private final LTLFormula subformula2;
 	
-	private final String operator = "U";
+	private final String operator = "W";
 
-	public LTLIUntil(LTLFormula subformula1, LTLFormula subformula2) {
+	public LTLWeakUntil(LTLFormula subformula1, LTLFormula subformula2) {
 		super();
 		Preconditions.checkNotNull(subformula1, "The first subformula cannot be null");
 		Preconditions.checkNotNull(subformula2, "The second subformula cannot be null");

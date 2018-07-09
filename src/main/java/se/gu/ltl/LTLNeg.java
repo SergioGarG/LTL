@@ -7,14 +7,14 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLINegation extends LTLFormula implements UnaryFormula<LTLFormula> {
+public class LTLNeg extends LTLFormula implements UnaryFormula<LTLFormula> {
 
 	// Formula f1 which is argument of the negation (\neg f1)
 	private LTLFormula subformula;
 
 	private final String operator = "NEG";
 
-	public LTLINegation(LTLFormula subformula) {
+	public LTLNeg(LTLFormula subformula) {
 
 		Preconditions.checkNotNull(subformula, "The subformula cannot be null");
 		this.subformula = subformula;
@@ -55,7 +55,7 @@ public class LTLINegation extends LTLFormula implements UnaryFormula<LTLFormula>
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LTLINegation other = (LTLINegation) obj;
+		LTLNeg other = (LTLNeg) obj;
 		if (operator == null) {
 			if (other.operator != null)
 				return false;

@@ -7,14 +7,14 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLISince extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLUntil extends LTLFormula implements BinaryFormula<LTLFormula> {
 
 	private final LTLFormula subformula1;
 	private final LTLFormula subformula2;
+	
+	private final String operator = "U";
 
-	private final String operator = "S";
-
-	public LTLISince(LTLFormula subformula1, LTLFormula subformula2) {
+	public LTLUntil(LTLFormula subformula1, LTLFormula subformula2) {
 		super();
 		Preconditions.checkNotNull(subformula1, "The first subformula cannot be null");
 		Preconditions.checkNotNull(subformula2, "The second subformula cannot be null");
@@ -26,16 +26,8 @@ public class LTLISince extends LTLFormula implements BinaryFormula<LTLFormula> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public <T> T accept(LTLVisitor<T> visitor) {
-		return visitor.visit(this);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public LTLFormula getLeftChild() {
-		return subformula1;
+		return this.subformula1;
 	}
 
 	/**
@@ -43,9 +35,17 @@ public class LTLISince extends LTLFormula implements BinaryFormula<LTLFormula> {
 	 */
 	@Override
 	public LTLFormula getRightChild() {
-		return subformula2;
+		return this.subformula2;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public <T> T accept(LTLVisitor<T> visitor) {
+		return visitor.visit(this);
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */

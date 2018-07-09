@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLIImplies extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLImplies extends LTLFormula implements BinaryFormula<LTLFormula> {
 
 	private final LTLFormula subformula1;
 	private final LTLFormula subformula2;
@@ -15,7 +15,7 @@ public class LTLIImplies extends LTLFormula implements BinaryFormula<LTLFormula>
 	private final String operator = "IMPL";
 
 	
-	public LTLIImplies(LTLFormula subformula1, LTLFormula subformula2) {
+	public LTLImplies(LTLFormula subformula1, LTLFormula subformula2) {
 		super();
 		Preconditions.checkNotNull(subformula1, "The first subformula cannot be null");
 		Preconditions.checkNotNull(subformula2, "The second subformula cannot be null");
