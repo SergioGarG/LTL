@@ -6,7 +6,7 @@ import java.util.Set;
 import com.google.common.base.Preconditions;
 
 
-public abstract class LTLPast extends LTLFormula implements  UnaryFormula<LTLFormula> {
+public abstract class LTLPast  implements  UnaryFormula<LTLFormula>,LTLFormula {
 
 	private LTLFormula subformula;
 
@@ -15,6 +15,14 @@ public abstract class LTLPast extends LTLFormula implements  UnaryFormula<LTLFor
 		this.subformula = subformula;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return  "P(" + this.getChild() + ")";
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 * 

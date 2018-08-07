@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLUntil extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLUntil  implements BinaryFormula<LTLFormula>,LTLFormula {
 
 	private final LTLFormula subformula1;
 	private final LTLFormula subformula2;
@@ -51,7 +51,7 @@ public class LTLUntil extends LTLFormula implements BinaryFormula<LTLFormula> {
 	 */
 	@Override
 	public String toString() {
-		return "(" + this.subformula1 + " " + operator + " " + this.subformula2 + ")";
+		return "(" + this.subformula1 + ") " + operator + "( " + this.subformula2 + ")";
 	}
 	
 	/**

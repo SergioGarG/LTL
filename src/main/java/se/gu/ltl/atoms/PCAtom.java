@@ -8,29 +8,19 @@ import com.google.common.base.Preconditions;
 import se.gu.ltl.LTLFormula;
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLPEAtom extends LTLAtom {
+public class PCAtom extends Atom {
 
 	
 	
 
 	private String condition;
 	
-	public LTLPEAtom(String condition) {
+	public PCAtom(String condition) {
 		Preconditions.checkNotNull(condition, "The condition cannot be null");
 		this.setCondition(condition);
 	}
 	
-	@Override
-	public Set<LTLFormula> getChildren() {
-		Set<LTLFormula> formulae = new HashSet<>();
-		formulae.add(this);
-		return formulae;
-	}
-
-	@Override
-	public <T> T accept(LTLVisitor<T> visitor) {
-		return visitor.visit(this);
-	}
+	
 
 	/**
 	 * @return the condition
@@ -78,7 +68,7 @@ public class LTLPEAtom extends LTLAtom {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		LTLPEAtom other = (LTLPEAtom) obj;
+		PCAtom other = (PCAtom) obj;
 		if (condition == null) {
 			if (other.condition != null)
 				return false;

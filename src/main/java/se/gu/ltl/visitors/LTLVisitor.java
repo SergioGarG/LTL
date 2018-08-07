@@ -11,17 +11,17 @@ import se.gu.ltl.LTLSince;
 import se.gu.ltl.LTLUntil;
 import se.gu.ltl.LTLWeakUntil;
 import se.gu.ltl.LTLNext;
-import se.gu.ltl.atoms.LTLPAAtom;
-import se.gu.ltl.atoms.LTLPEAtom;
-import se.gu.ltl.atoms.LTLPLAtom;
-import se.gu.ltl.atoms.LTLPropositionalAtom;
-import se.gu.ltl.atoms.LTLTrue;
+import se.gu.ltl.atoms.PAAtom;
+import se.gu.ltl.atoms.PCAtom;
+import se.gu.ltl.atoms.PLAtom;
+import se.gu.ltl.atoms.PropositionalAtom;
+import se.gu.ltl.atoms.True;
 
 public interface LTLVisitor<T> {
 
 	public T visit(LTLDisjunction formula);
 
-	public T visit(LTLTrue formula);
+	public T visit(True formula);
 
 	public T visit(LTLConjunction formula);
 
@@ -35,7 +35,7 @@ public interface LTLVisitor<T> {
 
 	public T visit(LTLSince formula);
 
-	public T visit(LTLPropositionalAtom formula);
+	public T visit(PropositionalAtom formula);
 
 	public T visit(LTLEventually mitliEventually);
 
@@ -43,11 +43,11 @@ public interface LTLVisitor<T> {
 
 	public T visit(LTLNext ltlNext);
 
-	public T visit(LTLPLAtom ltlplAtom);
+	public T visit(PLAtom ltlplAtom);
 
-	public T visit(LTLPEAtom ltlpeAtom);
+	public T visit(PCAtom ltlpeAtom);
 
-	public T visit(LTLPAAtom ltlpaAtom);
+	public T visit(PAAtom ltlpaAtom);
 
 	public T visit(LTLWeakUntil ltlWeakUntil);
 

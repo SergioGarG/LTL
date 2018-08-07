@@ -6,18 +6,13 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.atoms.LTLPropositionalAtom;
 import se.gu.ltl.atoms.LTLTrue;
+import se.gu.ltl.atoms.PropositionalAtom;
+import se.gu.ltl.atoms.True;
 import se.gu.ltl.visitors.LTLVisitor;
 
-public abstract class LTLFormula extends Formula {
+public interface LTLFormula extends Formula {
 
-	private int maxIntComparedto = 0;
-
-	public static final LTLFormula TRUE = new LTLTrue();
-
-	public LTLFormula() {
-		super();
-
-	}
+	public static final LTLTrue TRUE = new LTLTrue();
 	
 	
 	public static LTLFormula getAnd(LTLFormula f1, LTLFormula f2) {
@@ -47,16 +42,6 @@ public abstract class LTLFormula extends Formula {
 
 	public abstract <T> T accept(LTLVisitor<T> visitor);
 
-	public int maxIntComparedto() {
-		return maxIntComparedto;
-	}
-
-	public int maxIntComparedto(int c) {
-		if (maxIntComparedto < c)
-			maxIntComparedto = c;
-
-		return maxIntComparedto;
-	}
 
 	// Producers method to build CLTL formulae of the argument formula
 

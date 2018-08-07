@@ -1,24 +1,26 @@
 package se.gu.ltl.visitors;
 
 import se.gu.ltl.LTLConjunction;
-import se.gu.ltl.LTLEventually;
 import se.gu.ltl.LTLDisjunction;
+import se.gu.ltl.LTLEventually;
 import se.gu.ltl.LTLGlobally;
 import se.gu.ltl.LTLIff;
 import se.gu.ltl.LTLImplies;
 import se.gu.ltl.LTLNeg;
+import se.gu.ltl.LTLNext;
 import se.gu.ltl.LTLSince;
 import se.gu.ltl.LTLUntil;
 import se.gu.ltl.LTLWeakUntil;
-import se.gu.ltl.LTLNext;
 import se.gu.ltl.atoms.PAAtom;
 import se.gu.ltl.atoms.PCAtom;
 import se.gu.ltl.atoms.PLAtom;
 import se.gu.ltl.atoms.PropositionalAtom;
 import se.gu.ltl.atoms.True;
+import se.gu.ltl.visitors.LTLFormulaToStringVisitor;
 
-public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
-
+public class LTL2NuSMV extends LTLFormulaToStringVisitor{
+	
+	
 	@Override
 	public String visit(LTLDisjunction formula) {
 		return "( " + formula.getLeftChild().accept(this) + ") || (" + formula.getRightChild().accept(this) + " )";
@@ -31,7 +33,7 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
 	public String visit(LTLConjunction formula) {
-		return "( " + formula.getLeftChild().accept(this) + ") && (" + formula.getRightChild().accept(this) + " )";
+		return "( " + formula.getLeftChild().accept(this) + ") & (" + formula.getRightChild().accept(this) + " )";
 	}
 
 	@Override
@@ -66,12 +68,12 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
 	public String visit(LTLEventually mitliEventually) {
-		return " <> (" + mitliEventually.getChild().accept(this) + ")";
+		return " F (" + mitliEventually.getChild().accept(this) + ")";
 	}
 
 	@Override
 	public String visit(LTLGlobally mitliGlobally) {
-		return " [] (" + mitliGlobally.getChild().accept(this) + ")";
+		return " G (" + mitliGlobally.getChild().accept(this) + ")";
 	}
 
 	@Override
@@ -81,7 +83,7 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
 	public String visit(PLAtom ltlplAtom) {
-		return "(" + ltlplAtom.getRobotName() + " in " + ltlplAtom.getLocationName() + ")";
+		return "(" + ltlplAtom.getLocationName() + ")";
 	}
 
 	@Override
@@ -92,12 +94,15 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
 	public String visit(PAAtom ltlpaAtom) {
-		return "(" + ltlpaAtom.getRobotName() + " exec " + ltlpaAtom.getActionName() + ")";
+		return "(" + ltlpaAtom.getActionName() + ")";
 	}
 
 	@Override
 	public String visit(LTLWeakUntil ltlWeakUntil) {
-		return "( " + ltlWeakUntil.getLeftChild().accept(this) + ") W (" + ltlWeakUntil.getRightChild().accept(this) + " )";
+		return "(( " + ltlWeakUntil.getLeftChild().accept(this) + ") U (" + ltlWeakUntil.getRightChild().accept(this) + " ) | ( G ("+ltlWeakUntil.getLeftChild().accept(this)+") ) )";
 	}
+	
+
+
 
 }

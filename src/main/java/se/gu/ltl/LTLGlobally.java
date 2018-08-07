@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLGlobally extends LTLFormula implements  UnaryFormula<LTLFormula> {
+public class LTLGlobally  implements  UnaryFormula<LTLFormula>,LTLFormula {
 
 	private final LTLFormula subformula;
 
@@ -23,6 +23,14 @@ public class LTLGlobally extends LTLFormula implements  UnaryFormula<LTLFormula>
 	@Override
 	public LTLFormula getChild() {
 		return this.subformula;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return "G (" + this.getChild() + ")";
 	}
 	
 	/**

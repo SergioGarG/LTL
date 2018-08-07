@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLDisjunction extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLDisjunction implements BinaryFormula<LTLFormula>,LTLFormula {
 
 	private final LTLFormula leftChild;
 	private final LTLFormula rightChild;
@@ -88,7 +88,7 @@ public class LTLDisjunction extends LTLFormula implements BinaryFormula<LTLFormu
 	 */
 	@Override
 	public String toString() {
-		return "(" + this.leftChild + " " + operator + " " + this.rightChild + ")";
+		return "(" + this.leftChild + ") " + operator + " (" + this.rightChild + ")";
 	}
 	
 	/**

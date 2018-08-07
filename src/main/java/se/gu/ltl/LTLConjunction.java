@@ -9,7 +9,7 @@ import se.gu.ltl.visitors.LTLVisitor;
 
 
 
-public class LTLConjunction extends LTLFormula implements BinaryFormula<LTLFormula> {
+public class LTLConjunction  implements BinaryFormula<LTLFormula>,LTLFormula {
 
 	private final LTLFormula leftChild;
 	private final LTLFormula rightChild;
@@ -92,7 +92,7 @@ public class LTLConjunction extends LTLFormula implements BinaryFormula<LTLFormu
 	 */
 	@Override
 	public String toString() {
-		return "(" + this.leftChild + " " + operator + " " + this.rightChild + ")";
+		return "(" + this.leftChild + ") " + operator + " (" + this.rightChild + ")";
 	}
 
 	/**

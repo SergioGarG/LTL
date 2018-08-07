@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLEventually extends LTLFormula implements UnaryFormula<LTLFormula> {
+public class LTLEventually  implements UnaryFormula<LTLFormula>,LTLFormula {
 
 	private final LTLFormula subformula;
 
@@ -17,6 +17,14 @@ public class LTLEventually extends LTLFormula implements UnaryFormula<LTLFormula
 		this.subformula = subformula;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return "F (" + this.getChild() + ")";
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */

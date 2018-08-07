@@ -5,17 +5,19 @@ How to use it:
 Adds the following dependency and repository in your POM.xml
 
 ```
-	<repositories>
-		<repository>
-			<id>LTL</id>
-			<url>https://github.com/co4robots</url>
+<repository>
+			<id>LTL-mvn-repo</id>
+			<url>https://raw.github.com/claudiomenghi/LTL/mvn-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 		</repository>
-	</repositories>
 
-
-		<dependency>
+	<dependency>
 			<groupId>se.gu</groupId>
 			<artifactId>LTL</artifactId>
-			<version>1.0.0</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
 ```

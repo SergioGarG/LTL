@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLNeg extends LTLFormula implements UnaryFormula<LTLFormula> {
+public class LTLNeg   implements UnaryFormula<LTLFormula>, LTLFormula {
 
 	// Formula f1 which is argument of the negation (\neg f1)
 	private LTLFormula subformula;
@@ -35,7 +35,7 @@ public class LTLNeg extends LTLFormula implements UnaryFormula<LTLFormula> {
 	 */
 	@Override
 	public String toString() {
-		return "(" + this.operator + this.getChild() + ")";
+		return  this.operator + "(" + this.getChild() + ")";
 	}
 	
 	@Override

@@ -6,16 +6,15 @@ import java.util.Set;
 import se.gu.ltl.LTLFormula;
 import se.gu.ltl.visitors.LTLVisitor;
 
-public class LTLPAAtom extends PAAtom implements LTLFormula {
+public class LTLPCAtom extends PCAtom implements LTLFormula {
 
-	
-	public LTLPAAtom(PAAtom atom){
-		super(atom.getRobotName(), atom.getActionName());
+	public LTLPCAtom(PCAtom atom){
+		super(atom.getCondition());
 	}
-	public LTLPAAtom(String robotName, String actionName) {
-		super(robotName, actionName);
+	public LTLPCAtom(String condition) {
+		super(condition);
 	}
-	
+
 	@Override
 	public Set<LTLFormula> getChildren() {
 
@@ -23,10 +22,11 @@ public class LTLPAAtom extends PAAtom implements LTLFormula {
 		formulae.add(this);
 		return formulae;
 	}
+	
+	
 
 	@Override
 	public <T> T accept(LTLVisitor<T> visitor) {
 		return visitor.visit(this);
 	}
-
 }

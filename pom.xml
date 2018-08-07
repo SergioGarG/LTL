@@ -4,7 +4,7 @@
 	<groupId>se.gu</groupId>
 	<artifactId>LTL</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>LTL</name>
 	<url>http://maven.apache.org</url>
 
@@ -47,6 +47,10 @@
 				</configuration>
 			</plugin>
 			<plugin>
+                
+              
+                
+                
 				<groupId>com.github.github</groupId>
 				<artifactId>site-maven-plugin</artifactId>
 				<version>0.12</version>
@@ -67,7 +71,7 @@
 								<include>**/*</include>
 							</includes>
 							<repositoryName>LTL</repositoryName>      <!-- github repo name -->
-							<repositoryOwner>co4robots</repositoryOwner>    <!-- github username -->
+							<repositoryOwner>claudiomenghi</repositoryOwner>    <!-- github username -->
 						</configuration>
 						<goals>
 							<goal>site</goal>
@@ -79,7 +83,7 @@
 
 						<configuration>
 							<repositoryName>LTL</repositoryName>      <!-- github repo name -->
-							<repositoryOwner>co4robots</repositoryOwner>    <!-- github username -->
+							<repositoryOwner>claudiomenghi</repositoryOwner>    <!-- github username -->
 							<merge>true</merge>
 							<path>${javadoc.path}</path>
 							<!-- <path>${project.artifactId}</path> -->
