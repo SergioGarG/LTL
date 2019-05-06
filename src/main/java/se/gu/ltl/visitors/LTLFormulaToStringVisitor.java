@@ -81,7 +81,7 @@ public class LTLFormulaToStringVisitor implements LTLVisitor<String> {
 
 	@Override
 	public String visit(PLAtom ltlplAtom) {
-		return "(" + ltlplAtom.getRobotName() + " in " + ltlplAtom.getLocationName() + ")";
+		return "(" + ltlplAtom.getLocationName() + ")";
 	}
 
 	@Override
