@@ -3,12 +3,9 @@
   <groupId>se.gu</groupId>
   <artifactId>LTL</artifactId>
   <versioning>
-    <release>1.0.0</release>
     <versions>
-      <version>1.0-SNAPSHOT</version>
-      <version>1.0.0</version>
       <version>0.0.1-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20180807070626</lastUpdated>
+    <lastUpdated>20190507131517</lastUpdated>
   </versioning>
 </metadata>
