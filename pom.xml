@@ -71,7 +71,7 @@
 								<include>**/*</include>
 							</includes>
 							<repositoryName>LTL</repositoryName>      <!-- github repo name -->
-							<repositoryOwner>claudiomenghi</repositoryOwner>    <!-- github username -->
+							<repositoryOwner>SergioGarG</repositoryOwner>    <!-- github username -->
 						</configuration>
 						<goals>
 							<goal>site</goal>
@@ -83,7 +83,7 @@
 
 						<configuration>
 							<repositoryName>LTL</repositoryName>      <!-- github repo name -->
-							<repositoryOwner>claudiomenghi</repositoryOwner>    <!-- github username -->
+							<repositoryOwner>SergioGarG</repositoryOwner>    <!-- github username -->
 							<merge>true</merge>
 							<path>${javadoc.path}</path>
 							<!-- <path>${project.artifactId}</path> -->
